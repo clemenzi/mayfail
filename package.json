@@ -1,6 +1,6 @@
 {
   "name": "mayfail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny, dependency-free Result tuple helper for synchronous and asynchronous functions",
   "keywords": [
     "async",
