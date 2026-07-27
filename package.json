@@ -9,15 +9,15 @@
     "try-catch",
     "typescript"
   ],
-  "homepage": "https://clemenzi.github.io/tcatch/",
+  "homepage": "https://clemenzi.github.io/mayfail/",
   "bugs": {
-    "url": "https://github.com/clemenzi/tcatch/issues"
+    "url": "https://github.com/clemenzi/mayfail/issues"
   },
   "license": "MIT",
   "author": "Valerio Clemenzi <nc@vcz.me>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clemenzi/tcatch.git"
+    "url": "git+https://github.com/clemenzi/mayfail.git"
   },
   "files": [
     "dist"
