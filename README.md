@@ -31,12 +31,6 @@ const [user, error] = await mayfail(() => fetch("/api/me").then((response) => re
 
 Success returns `[value, null]`; thrown errors and rejected promises return `[null, error]`. Unknown thrown values are normalized to `Error` instances.
 
-The function is also available as `tc` and `tryCatch`:
-
-```ts
-import { tc, tryCatch } from "mayfail";
-```
-
 See the [documentation site](https://clemenzi.github.io/mayfail/) for the full API.
 
 ## License
