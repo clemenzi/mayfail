@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    format:
+      glob:
+        - "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,json5,css,scss,less,pcss,postcss,graphql,gql,gqls,toml,html,htm,xhtml,vue,svelte,md,markdown,mdx,yml,yaml}"
+        - "**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,json5,css,scss,less,pcss,postcss,graphql,gql,gqls,toml,html,htm,xhtml,vue,svelte,md,markdown,mdx,yml,yaml}"
+      run: npm run format -- {staged_files}
+      stage_fixed: true
