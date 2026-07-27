@@ -1,5 +1,5 @@
 {
-  "name": "tcatch",
+  "name": "mayfail",
   "version": "1.0.0",
   "description": "A tiny, dependency-free Result tuple helper for synchronous and asynchronous functions",
   "keywords": [

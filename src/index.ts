@@ -5,10 +5,10 @@ const fail = (error: unknown): Result<never> => [
   error instanceof Error ? error : Error(String(error)),
 ];
 
-function tcatch<T>(f: () => Promise<T>): Promise<Result<T>>;
-function tcatch<T>(f: () => T): Result<T>;
-function tcatch<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>>;
-function tcatch<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>> {
+function mayfail<T>(f: () => Promise<T>): Promise<Result<T>>;
+function mayfail<T>(f: () => T): Result<T>;
+function mayfail<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>>;
+function mayfail<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>> {
   try {
     const value = f();
 
@@ -20,4 +20,4 @@ function tcatch<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>> {
   }
 }
 
-export { tcatch, tcatch as tc, tcatch as tryCatch };
+export { mayfail, mayfail as tc, mayfail as tryCatch };

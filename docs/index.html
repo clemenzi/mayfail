@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Documentation for tcatch, a tiny TypeScript error handling helper."
+      content="Documentation for mayfail, a tiny TypeScript error handling helper."
     />
-    <title>tcatch documentation</title>
+    <title>mayfail documentation</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -20,7 +20,7 @@
   </head>
   <body>
     <main>
-      <h1>tcatch<span class="mark">()</span></h1>
+      <h1>mayfail<span class="mark">()</span></h1>
       <p>A tiny, dependency-free error handling helper for TypeScript.</p>
       <p>
         <code>tcatch</code> runs a function and returns its value alongside a possible error.
@@ -30,10 +30,10 @@
       </p>
 
       <h2>Installation</h2>
-      <pre><code class="language-bash">npm install tcatch</code></pre>
+      <pre><code class="language-bash">npm install mayfail</code></pre>
 
       <h2>Usage</h2>
-      <pre><code class="language-typescript">import { tcatch } from 'tcatch'
+      <pre><code class="language-typescript">import { tcatch } from 'mayfail'
 
 const [config, error] = tcatch(() =&gt; JSON.parse(input))
 
@@ -89,7 +89,7 @@ type Result&lt;T&gt; = [T, null] | [null, Error]</code></pre>
 
       <h3>Aliases</h3>
       <p><code>tc</code> and <code>tryCatch</code> are aliases for <code>tcatch</code>.</p>
-      <pre><code class="language-typescript">import { tc, tryCatch } from 'tcatch'</code></pre>
+      <pre><code class="language-typescript">import { tc, tryCatch } from 'mayfail'</code></pre>
 
       <p>
         <a href="https://github.com/clemenzi/tcatch">View the repository on GitHub</a>
