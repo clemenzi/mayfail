@@ -23,7 +23,7 @@
       <h1>mayfail<span class="mark">()</span></h1>
       <p>A tiny, dependency-free error handling helper for TypeScript.</p>
       <p>
-        <code>mayfaill</code> runs a function and returns its value alongside a possible error.
+        <code>mayfail</code> runs a function and returns its value alongside a possible error.
         Instead of wrapping each call in <code>try/catch</code>, you can handle both outcomes from
         one predictable tuple. It works with synchronous functions, promises, and async functions
         without changing their execution model.
@@ -33,9 +33,9 @@
       <pre><code class="language-bash">npm install mayfail</code></pre>
 
       <h2>Usage</h2>
-      <pre><code class="language-typescript">import { mayfaill } from 'mayfail'
+      <pre><code class="language-typescript">import { mayfail } from 'mayfail'
 
-const [config, error] = mayfaill(() =&gt; JSON.parse(input))
+const [config, error] = mayfail(() =&gt; JSON.parse(input))
 
 if (error) {
   console.error(error.message)
@@ -48,13 +48,13 @@ if (error) {
       </p>
 
       <h2>Async usage</h2>
-      <pre><code class="language-typescript">const [user, error] = await mayfaill(() =&gt;
+      <pre><code class="language-typescript">const [user, error] = await mayfail(() =&gt;
   fetch('/api/me').then((response) =&gt; response.json()),
 )</code></pre>
 
       <p>You can use it with an async callback as well:</p>
       <pre><code class="language-typescript">async function getUser(id: string) {
-  const [user, error] = await mayfaill(async () =&gt; {
+  const [user, error] = await mayfail(async () =&gt; {
     const response = await fetch(`/api/users/${id}`)
 
     if (!response.ok) {
@@ -69,13 +69,13 @@ if (error) {
 }</code></pre>
 
       <h2>API</h2>
-      <h3><code>mayfaill(callback)</code></h3>
+      <h3><code>mayfail(callback)</code></h3>
       <p>
         Executes <code>callback</code> and catches thrown errors or rejected promises. Non-Error
         values are converted to <code>Error</code> instances.
       </p>
-      <pre><code class="language-typescript">function mayfaill&lt;T&gt;(callback: () =&gt; T): Result&lt;T&gt;
-function mayfaill&lt;T&gt;(callback: () =&gt; Promise&lt;T&gt;): Promise&lt;Result&lt;T&gt;&gt;
+      <pre><code class="language-typescript">function mayfail&lt;T&gt;(callback: () =&gt; T): Result&lt;T&gt;
+function mayfail&lt;T&gt;(callback: () =&gt; Promise&lt;T&gt;): Promise&lt;Result&lt;T&gt;&gt;
 
 type Result&lt;T&gt; = [T, null] | [null, Error]</code></pre>
 
@@ -88,11 +88,11 @@ type Result&lt;T&gt; = [T, null] | [null, Error]</code></pre>
       </p>
 
       <h3>Aliases</h3>
-      <p><code>tc</code> and <code>tryCatch</code> are aliases for <code>mayfaill</code>.</p>
+      <p><code>tc</code> and <code>tryCatch</code> are aliases for <code>mayfail</code>.</p>
       <pre><code class="language-typescript">import { tc, tryCatch } from 'mayfail'</code></pre>
 
       <p>
-        <a href="https://github.com/clemenzi/mayfaill">View the repository on GitHub</a>
+        <a href="https://github.com/clemenzi/mayfail">View the repository on GitHub</a>
       </p>
     </main>
   </body>
