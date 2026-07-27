@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { tc, mayfail, tryCatch } from "../src";
+import { mayfail } from "../src";
 
 test("returns a value tuple synchronously", () => {
   expect(mayfail(() => 42)).toEqual([42, null]);
@@ -23,9 +23,4 @@ test("catches an async rejection", async () => {
   const error = new Error("nope");
 
   await expect(mayfail(() => Promise.reject(error))).resolves.toEqual([null, error]);
-});
-
-test("exports short aliases", () => {
-  expect(tc(() => "thenable")).toEqual(["thenable", null]);
-  expect(tryCatch(() => true)).toEqual([true, null]);
 });

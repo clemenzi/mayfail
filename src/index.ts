@@ -20,4 +20,4 @@ function mayfail<T>(f: () => T | Promise<T>): Result<T> | Promise<Result<T>> {
   }
 }
 
-export { mayfail, mayfail as tc, mayfail as tryCatch };
+export { mayfail };
