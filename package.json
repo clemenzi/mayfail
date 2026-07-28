@@ -1,49 +1,22 @@
 {
-  "name": "mayfail",
-  "version": "1.1.2",
-  "description": "A tiny, dependency-free Result tuple helper for synchronous and asynchronous functions",
-  "keywords": [
-    "async",
-    "error-handling",
-    "result",
-    "try-catch",
-    "typescript"
-  ],
-  "homepage": "https://clemenzi.github.io/mayfail/",
-  "bugs": {
-    "url": "https://github.com/clemenzi/mayfail/issues"
-  },
-  "license": "MIT",
-  "author": "Valerio Clemenzi <nc@vcz.me>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/clemenzi/mayfail.git"
-  },
-  "files": [
-    "dist"
-  ],
-  "type": "module",
-  "exports": {
-    ".": "./dist/index.mjs",
-    "./package.json": "./package.json"
-  },
+  "name": "mayfail-monorepo",
+  "private": true,
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
-    "format": "oxfmt",
-    "format:check": "oxfmt --check",
-    "test": "vitest",
-    "typecheck": "tsc --noEmit",
-    "release": "bumpp",
-    "prepublishOnly": "npm run build"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "docs:dev": "pnpm --filter @mayfail/docs dev",
+    "docs:build": "pnpm --filter @mayfail/docs build",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
-    "bumpp": "^11.1.0",
     "lefthook": "^2.1.10",
     "oxfmt": "^0.60.0",
-    "tsdown": "^0.22.14",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
-  }
+    "turbo": "^2.8.13",
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "pnpm@11.17.0"
 }

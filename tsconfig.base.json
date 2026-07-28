@@ -16,6 +16,5 @@
     "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
-  },
-  "include": ["src"]
+  }
 }

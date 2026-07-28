@@ -42,5 +42,5 @@ jobs:
       - name: Run tests
         run: pnpm run test -- --run
 
-      - name: Build package
+      - name: Build workspace
         run: pnpm run build
