@@ -21,8 +21,6 @@ jobs:
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -42,5 +40,5 @@ jobs:
       - name: Run tests
         run: pnpm run test -- --run
 
-      - name: Build package
+      - name: Build workspace
         run: pnpm run build

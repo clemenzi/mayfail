@@ -1,37 +1,32 @@
 # mayfail
 
-[![CI](https://img.shields.io/github/actions/workflow/status/clemenzi/mayfail/ci.yml?label=CI)](https://github.com/clemenzi/mayfail/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/mayfail)](https://www.npmjs.com/package/mayfail)
-[![License](https://img.shields.io/npm/l/mayfail)](https://github.com/clemenzi/mayfail/blob/main/LICENSE)
-[![Website](https://img.shields.io/badge/website-visit-2ea44f)](https://clemenzi.github.io/mayfail/)
+Small, explicit error handling for TypeScript.
 
-Tiny, dependency-free error handling for synchronous and asynchronous JavaScript and TypeScript functions.
+This repository is a pnpm + Turborepo workspace:
 
-## Install
+- `packages/mayfail`: the dependency-free `mayfail` result tuple helper.
+- `packages/react`: `@mayfail/react`, including the `useMayfail` hook.
+- `apps/docs`: the static VitePress documentation site, published to GitHub Pages.
 
-```bash
-npm install mayfail
+## Development
+
+```sh
+pnpm install
+pnpm build
+pnpm test
 ```
 
-## How it works
+Run the docs locally with `pnpm docs:dev`. The production output is generated in `apps/docs/.vitepress/dist`.
 
-Synchronous callbacks return a tuple immediately:
+## Packages
 
 ```ts
 import { mayfail } from "mayfail";
 
-const [value, error] = mayfail(() => JSON.parse(input));
+const [value, error] = await mayfail(() => fetch("/api/me"));
 ```
 
-Async callbacks return a promise of the same tuple:
-
-```ts
-const [user, error] = await mayfail(() => fetch("/api/me").then((response) => response.json()));
-```
-
-Success returns `[value, null]`; thrown errors and rejected promises return `[null, error]`. Unknown thrown values are normalized to `Error` instances.
-
-See the [documentation site](https://clemenzi.github.io/mayfail/) for the full API.
+For React, install `@mayfail/react` and use `useMayfail` to run an operation while retaining its latest `value`, `error`, `isPending`, and `result` state.
 
 ## License
 
