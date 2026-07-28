@@ -1,8 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { mayfail } from "mayfail";
-import type { Result } from "mayfail";
+import { mayfail, type Result } from "mayfail";
 
 export type MayfailRunner<Arguments extends unknown[], Value> = (
   ...arguments_: Arguments
