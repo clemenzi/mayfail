@@ -14,6 +14,6 @@ features:
     details: Success is [value, null]. Failure is [null, error]. No wrapper object and no hidden control flow.
   - title: Sync or async
     details: Keep synchronous code synchronous. Promises receive the exact same result shape when awaited.
-  - title: React-ready
-    details: "@mayfail/react turns an operation into a stable runner with pending, value, error, and reset state."
+  - title: Framework-ready
+    details: "React and Vue integrations turn an operation into a runner with pending, value, error, and reset state."
 ---

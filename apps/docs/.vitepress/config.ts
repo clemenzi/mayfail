@@ -28,7 +28,10 @@ export default defineConfig({
       },
       {
         text: "Frameworks",
-        items: [{ text: "React", link: "/frameworks/react" }],
+        items: [
+          { text: "React", link: "/frameworks/react" },
+          { text: "Vue", link: "/frameworks/vue" },
+        ],
       },
     ],
   },

@@ -1,0 +1,56 @@
+{
+  "name": "@mayfail/vue",
+  "version": "0.1.0",
+  "description": "Vue integration for mayfail",
+  "keywords": [
+    "error-handling",
+    "result",
+    "try-catch",
+    "typescript",
+    "vue"
+  ],
+  "homepage": "https://clemenzi.github.io/mayfail/",
+  "bugs": {
+    "url": "https://github.com/clemenzi/mayfail/issues"
+  },
+  "license": "MIT",
+  "author": "Valerio Clemenzi <nc@vcz.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemenzi/mayfail.git",
+    "directory": "packages/vue"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "mayfail": "workspace:^"
+  },
+  "devDependencies": {
+    "tsdown": "^0.22.14",
+    "vitest": "^4.1.10",
+    "vue": "^3.5.40"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3"
+  }
+}
