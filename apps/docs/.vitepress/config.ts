@@ -1,8 +1,8 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  // GitHub Pages serves this repository at https://clemenzi.github.io/tcatch/.
-  base: "/tcatch/",
+  // GitHub Pages serves this repository at https://clemenzi.github.io/mayfail/.
+  base: "/mayfail/",
   title: "mayfail",
   description: "Small, explicit error handling for TypeScript.",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
