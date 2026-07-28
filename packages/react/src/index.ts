@@ -1,4 +1,6 @@
-import { useCallback, useState } from "react";
+"use client";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { mayfail } from "mayfail";
 import type { Result } from "mayfail";
 
@@ -21,42 +23,64 @@ export interface UseMayfailReturn<
   reset: () => void;
 }
 
+type InternalState<Value> = [result: Result<Value> | null, isPending: boolean];
+
+const INITIAL_STATE: InternalState<never> = [null, false];
+
 /**
  * Runs an operation and keeps its latest Result in React state.
  *
  * The operation is always awaited, so execute consistently returns a Promise.
+ * When executions overlap, only the latest execution can update the state.
  */
 export function useMayfail<Arguments extends unknown[], Value>(
   operation: MayfailRunner<Arguments, Value>,
 ): UseMayfailReturn<Arguments, Awaited<Value>> {
   type ResolvedValue = Awaited<Value>;
-  const [result, setResult] = useState<Result<ResolvedValue> | null>(null);
-  const [isPending, setIsPending] = useState(false);
+  const [state, setState] = useState<InternalState<ResolvedValue>>(INITIAL_STATE);
+  const operationRef = useRef(operation);
+  const executionIdRef = useRef(0);
 
-  const execute = useCallback(
-    async (...arguments_: Arguments): Promise<Result<ResolvedValue>> => {
-      setIsPending(true);
-      const nextResult = await mayfail<Promise<ResolvedValue>>(() =>
-        Promise.resolve(operation(...arguments_)),
-      );
-      setResult(nextResult);
-      setIsPending(false);
-      return nextResult;
-    },
-    [operation],
-  );
+  operationRef.current = operation;
 
-  const reset = useCallback(() => {
-    setResult(null);
-    setIsPending(false);
+  useEffect(() => {
+    return () => {
+      executionIdRef.current += 1;
+    };
   }, []);
 
-  return {
-    error: result?.[1] ?? null,
-    execute,
-    isPending,
-    reset,
-    result,
-    value: result?.[0] ?? null,
-  };
+  const execute = useCallback(async (...arguments_: Arguments): Promise<Result<ResolvedValue>> => {
+    const executionId = ++executionIdRef.current;
+
+    setState((currentState) => (currentState[1] ? currentState : [currentState[0], true]));
+
+    const nextResult = await mayfail<Promise<ResolvedValue>>(
+      async (): Promise<ResolvedValue> =>
+        (await operationRef.current(...arguments_)) as ResolvedValue,
+    );
+
+    if (executionId === executionIdRef.current) {
+      setState([nextResult, false]);
+    }
+
+    return nextResult;
+  }, []);
+
+  const reset = useCallback(() => {
+    executionIdRef.current += 1;
+    setState(INITIAL_STATE);
+  }, []);
+
+  return useMemo(() => {
+    const [result, isPending] = state;
+
+    return {
+      error: result === null ? null : result[1],
+      execute,
+      isPending,
+      reset,
+      result,
+      value: result === null ? null : result[0],
+    };
+  }, [execute, reset, state]);
 }

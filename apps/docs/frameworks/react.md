@@ -28,4 +28,6 @@ function ProfileButton() {
 }
 ```
 
-`execute` always returns `Promise<Result<T>>`, while `result`, `value`, `error`, and `isPending` represent the latest run. Call `reset()` to clear the result.
+`execute` always returns `Promise<Result<T>>`, while `result`, `value`, `error`, and `isPending` represent the latest run.
+
+When calls overlap, each returned promise resolves normally, but only the latest call updates the rendered state. Call `reset()` to clear the result and prevent executions already in flight from updating it later.

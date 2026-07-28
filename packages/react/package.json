@@ -10,22 +10,30 @@
     "typescript"
   ],
   "homepage": "https://clemenzi.github.io/mayfail/",
+  "bugs": {
+    "url": "https://github.com/clemenzi/mayfail/issues"
+  },
   "license": "MIT",
   "author": "Valerio Clemenzi <nc@vcz.me>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clemenzi/mayfail.git"
+    "url": "git+https://github.com/clemenzi/mayfail.git",
+    "directory": "packages/react"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsdown",
