@@ -72,6 +72,7 @@ export function useMayfail<Arguments extends unknown[], Value>(
 
   onScopeDispose(() => {
     executionId += 1;
+    pending.value = false;
   });
 
   return {
