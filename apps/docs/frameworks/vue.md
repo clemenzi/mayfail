@@ -2,6 +2,20 @@
 
 `@mayfail/vue` exposes operation state as Vue refs without forcing a request library or a particular UI pattern.
 
+## Install
+
+`@mayfail/vue` requires Vue 3.3 or later. Install it in an existing Vue application:
+
+```sh
+pnpm add @mayfail/vue
+```
+
+```sh
+npm install @mayfail/vue
+```
+
+The adapter declares `vue` as a peer dependency, so your application provides Vue. `mayfail` is installed automatically as the adapter's runtime dependency; it does not need to be added separately.
+
 ## `useMayfail`
 
 Pass an operation to `useMayfail`. Call `execute` from an event handler and render from the returned refs.
