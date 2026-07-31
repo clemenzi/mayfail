@@ -6,6 +6,7 @@ This repository is a pnpm + Turborepo workspace:
 
 - `packages/mayfail`: the dependency-free `mayfail` result tuple helper.
 - `packages/react`: `@mayfail/react`, including the `useMayfail` hook.
+- `packages/vue`: `@mayfail/vue`, including the `useMayfail` composable.
 - `apps/docs`: the static VitePress documentation site, published to GitHub Pages.
 
 ## Development
@@ -27,6 +28,8 @@ const [value, error] = await mayfail(() => fetch("/api/me"));
 ```
 
 For React, install `@mayfail/react` and use `useMayfail` to run an operation while retaining its latest `value`, `error`, `isPending`, and `result` state.
+
+For Vue, install `@mayfail/vue`. Its `useMayfail` composable exposes the same operation state as readonly Vue refs.
 
 ## License
 
