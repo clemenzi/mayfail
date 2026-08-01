@@ -70,10 +70,19 @@ export function useMayfail<Arguments extends unknown[], Value>(
     state.set(INITIAL_STATE);
   };
 
-  onDestroy(() => {
-    executionId += 1;
-    state.update(([$result]) => [$result, false]);
-  });
+  try {
+    onDestroy(() => {
+      executionId += 1;
+      state.update(([$result]) => [$result, false]);
+    });
+  } catch (error) {
+    if (
+      !(error instanceof Error) ||
+      !/outside component initialization/i.test(error.message)
+    ) {
+      throw error;
+    }
+  }
 
   return {
     error,
