@@ -15,5 +15,5 @@ features:
   - title: Sync or async
     details: Keep synchronous code synchronous. Promises receive the exact same result shape when awaited.
   - title: Framework-ready
-    details: "React and Vue integrations turn an operation into a runner with pending, value, error, and reset state."
+    details: "React, Svelte, and Vue integrations turn an operation into a runner with pending, value, error, and reset state."
 ---

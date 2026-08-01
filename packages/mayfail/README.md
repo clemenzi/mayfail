@@ -46,6 +46,14 @@ if (error) {
 
 For React state around an operation, use [`@mayfail/react`](https://www.npmjs.com/package/@mayfail/react) and its `useMayfail` hook.
 
+## Svelte
+
+For Svelte stores around an operation, use [`@mayfail/svelte`](https://www.npmjs.com/package/@mayfail/svelte) and its `useMayfail` integration.
+
+## Vue
+
+For Vue refs around an operation, use [`@mayfail/vue`](https://www.npmjs.com/package/@mayfail/vue) and its `useMayfail` composable.
+
 ## Documentation
 
 Read the full documentation at [clemenzi.github.io/mayfail](https://clemenzi.github.io/mayfail/).

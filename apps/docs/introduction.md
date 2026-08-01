@@ -21,3 +21,5 @@ Use it where throwing is more noise than signal, while keeping synchronous code 
 - [Install `mayfail`](/install)
 - [Learn the basic usage pattern](/usage/basic-usage)
 - [Use the React adapter](/frameworks/react)
+- [Use the Svelte adapter](/frameworks/svelte)
+- [Use the Vue adapter](/frameworks/vue)
