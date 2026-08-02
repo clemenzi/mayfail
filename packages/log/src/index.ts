@@ -35,6 +35,7 @@ function logResult<T>(result: Result<T>, options: LogOptions): Result<T> {
 
 export function log<T>(result: Promise<Result<T>>, options?: LogOptions): Promise<Result<T>>;
 export function log<T>(result: Result<T>, options?: LogOptions): Result<T>;
+export function log<T>(result: Result<T> | Promise<Result<T>>, options?: LogOptions): Result<T> | Promise<Result<T>>;
 export function log<T>(
   result: Result<T> | Promise<Result<T>>,
   options: LogOptions = {},
