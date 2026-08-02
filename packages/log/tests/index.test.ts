@@ -1,4 +1,4 @@
-import { mayfail } from "mayfail";
+import { mayfail, type Result } from "mayfail";
 import { describe, expect, test, vi } from "vitest";
 import { log, type Logger } from "../src";
 
@@ -49,6 +49,24 @@ describe("log", () => {
     expect(write).toHaveBeenCalledWith("mayfail operation failed", error);
   });
 
+  test("preserves a failed result when the logger throws", () => {
+    const error = new Error("nope");
+    const result = mayfail(() => {
+      throw error;
+    });
+    const logger: Logger = {
+      debug: vi.fn(),
+      error: vi.fn(() => {
+        throw new Error("logger failed");
+      }),
+      info: vi.fn(),
+      warn: vi.fn(),
+    };
+
+    expect(log(result, { logger })).toBe(result);
+    expect(logger.error).toHaveBeenCalledWith("mayfail operation failed", error);
+  });
+
   test("supports direct tuple destructuring", () => {
     const { logger } = createLogger();
     const [value, error] = log(
@@ -58,5 +76,13 @@ describe("log", () => {
 
     expect(value).toBe("done");
     expect(error).toBeNull();
+  });
+
+  test("accepts a result whose operation can be synchronous or asynchronous", () => {
+    const { logger } = createLogger();
+    const operation = (): string | Promise<string> => "done";
+    const result: Result<string> | Promise<Result<string>> = mayfail(operation);
+
+    expect(log(result, { logger })).toBe(result);
   });
 });

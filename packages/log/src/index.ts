@@ -23,10 +23,14 @@ function logResult<T>(result: Result<T>, options: LogOptions): Result<T> {
   if (error !== null) {
     const { context, level = "error", logger = console, message = DEFAULT_MESSAGE } = options;
 
-    if (context === undefined) {
-      logger[level](message, error);
-    } else {
-      logger[level](message, error, context);
+    try {
+      if (context === undefined) {
+        logger[level](message, error);
+      } else {
+        logger[level](message, error, context);
+      }
+    } catch {
+      // Logging must not change the result flow when a logger fails.
     }
   }
 
