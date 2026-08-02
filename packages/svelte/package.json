@@ -1,0 +1,56 @@
+{
+  "name": "@mayfail/svelte",
+  "version": "0.1.0",
+  "description": "Svelte integration for mayfail",
+  "keywords": [
+    "error-handling",
+    "result",
+    "svelte",
+    "try-catch",
+    "typescript"
+  ],
+  "homepage": "https://clemenzi.github.io/mayfail/",
+  "bugs": {
+    "url": "https://github.com/clemenzi/mayfail/issues"
+  },
+  "license": "MIT",
+  "author": "Valerio Clemenzi <nc@vcz.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemenzi/mayfail.git",
+    "directory": "packages/svelte"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "mayfail": "workspace:^"
+  },
+  "devDependencies": {
+    "svelte": "^5.0.0",
+    "tsdown": "^0.22.14",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "svelte": ">=4"
+  }
+}

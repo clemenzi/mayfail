@@ -30,6 +30,7 @@ export default defineConfig({
         text: "Frameworks",
         items: [
           { text: "React", link: "/frameworks/react" },
+          { text: "Svelte", link: "/frameworks/svelte" },
           { text: "Vue", link: "/frameworks/vue" },
         ],
       },
