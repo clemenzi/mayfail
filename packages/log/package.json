@@ -1,0 +1,52 @@
+{
+  "name": "@mayfail/log",
+  "version": "0.1.0",
+  "description": "Logging wrapper for mayfail Result tuples",
+  "keywords": [
+    "error-handling",
+    "logging",
+    "mayfail",
+    "result",
+    "typescript"
+  ],
+  "homepage": "https://clemenzi.github.io/mayfail/",
+  "bugs": {
+    "url": "https://github.com/clemenzi/mayfail/issues"
+  },
+  "license": "MIT",
+  "author": "Valerio Clemenzi <nc@vcz.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemenzi/mayfail.git",
+    "directory": "packages/log"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "mayfail": "workspace:^"
+  },
+  "devDependencies": {
+    "tsdown": "^0.22.14",
+    "vitest": "^4.1.10"
+  }
+}
