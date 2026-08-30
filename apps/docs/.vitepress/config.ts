@@ -22,6 +22,7 @@ export default defineConfig({
             items: [
               { text: "Basic Usage", link: "/usage/basic-usage" },
               { text: "Async", link: "/usage/async" },
+              { text: "Log", link: "/usage/log" },
             ],
           },
         ],
